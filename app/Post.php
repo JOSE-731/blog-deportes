@@ -23,5 +23,12 @@ class Post extends Model
                 'onUpdate' => 'true'
             ]
         ];
+
+       
+    }
+
+    //Un post pertenece a un usuario
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
