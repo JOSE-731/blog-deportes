@@ -34,6 +34,7 @@ class Post extends Model
 
 
     //Mostrará una parte de la informacion
+    //Se utiliza para obtener una parte específica de una cadena de caracteres
     public function getGetExcerptAttribute(){
 
         return substr($this->body, 0, 140);

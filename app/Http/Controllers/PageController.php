@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     public function posts(){
         //Todos los post y los ordena de forma ascendente
-        $posts = Post::orderby('id', 'desc')->get();
+        $posts = Post::orderby('id', 'desc')->paginate();
         return view('posts', compact('posts'));
     }
 
