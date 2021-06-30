@@ -19,4 +19,5 @@ Route::get('blog/{post}', 'PageController@post')->name('post');
 
 Auth::routes();
 
+Route::resource('post', 'PostController')->middleware('auth')->except('show');
 Route::get('/home', 'HomeController@index')->name('home');
