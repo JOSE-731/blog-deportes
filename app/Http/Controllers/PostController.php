@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Post;
 use App\Http\Requests\PostRequest;
+
+//Agregamos  esta clase para eliminar del storage la imagen anterior, en la opcion editar
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -81,7 +83,16 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        if($request->hasFile('imagen')){
+            //Eliminar la imagen
+            Storage::disk('public')->delete($post->imagen);
+            $post['imagen']=$request->file('imagen')->store('uploads','public');
+            $post->save();
+        }
+
+        return redirect('post')->with('status', 'Actualizado con éxito');
     }
 
     /**
@@ -92,6 +103,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        //Eliminar la imagen
+        Storage::disk('public')->delete($post->imagen);   
         $post->delete();
 
         return back();

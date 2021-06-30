@@ -35,7 +35,7 @@
                             <textarea name="iframe" rows="4" class="form-control" autocomplete="off">{{ $post->iframe }}</textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Enviar" class="btn btn-sm btn-primary">
+                            <input type="submit" value="Actualizar" class="btn btn-sm btn-primary">
                         </div>
                     </form>
                 </div>
