@@ -37,7 +37,17 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        //
+        //dd($request->all());
+        $post = Post::create([
+            'user_id' => auth()->user()->id
+        ] + $request->all());
+
+        if($request->hasFile('imagen')){
+            $post['imagen']=$request->file('imagen')->store('uploads','public');
+            $post->save();
+        }
+
+        return back()->with('status', 'Creado con exito');
     }
 
     /**

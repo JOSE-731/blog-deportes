@@ -16,7 +16,8 @@
                         </div>
                     @endif
 
-                    <form action="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label>Titulo *</label>
                             <input type="text" name="title" class="form-control" required autocomplete="off">
