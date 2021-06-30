@@ -44,4 +44,11 @@ class Post extends Model
 
         return substr($this->body, 0, 140);
     }
+
+    //Mostrar la imagen
+    //Luego php artisan storage:link, para tener accerso a lo de esta carpeta
+    public function getGetImageAttribute(){
+        if($this->imagen)
+          return url("storage/$this->imagen");
+    }
 }

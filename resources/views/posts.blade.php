@@ -6,6 +6,14 @@
         <div class="col-md-8">
             @foreach($posts as $post)
                 <div class="card m-4">
+                   <div class="card-body">
+                       @if($post->imagen)
+                         <img src="{{ $post->get_image }}" alt="imagen" class="card-img-top">
+                       @elseif($post->iframe)
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{ $post->iframe }}" allowfullscreen></iframe>
+                          </div>
+                       @endif
                     <h5 class="card-title m-3">{{ $post->title }}</h5>
                     <p class="card-text m-3">
                         
@@ -19,6 +27,7 @@
                         </em>
                         {{ $post->created_at->format('d M Y') }}
                     </p>
+                   </div>
                 </div>
             @endforeach
             {{$posts->links()}}
