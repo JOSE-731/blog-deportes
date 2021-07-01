@@ -21,3 +21,5 @@ Auth::routes();
 
 Route::resource('post', 'PostController')->middleware('auth')->except('show');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('information/user', 'PageController@information')->name('information')->middleware('auth');

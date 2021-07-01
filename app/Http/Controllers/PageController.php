@@ -18,4 +18,9 @@ class PageController extends Controller
         //Obtenemos todo lo del post que se envie por parametro
         return view('post', ['post' => $post]);
     }
+
+
+    public function information(){
+        return view('posts.information');
+    }
 }
