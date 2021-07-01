@@ -51,7 +51,7 @@
                         @else
                         <li class="nav-item">
                             <a href="{{ route('post.index') }}" class="nav-link">
-                              Articulo
+                             Mis articulo
                             </a>
                         </li>
                             <li class="nav-item dropdown">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Post;
 use App\Http\Requests\PostRequest;
-
+use App\User;
 //Agregamos  esta clase para eliminar del storage la imagen anterior, en la opcion editar
 use Illuminate\Support\Facades\Storage;
 
@@ -16,9 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderby('id', 'desc')->get();
+        //Obtenemos el id del usuario logeado
+        $user1 = auth()->user()->id;
+        $posts = Post::where('user_id', '=', $user1)->orderby('id', 'desc')->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'user1'));
     }
 
     /**
