@@ -22,4 +22,6 @@ Auth::routes();
 Route::resource('post', 'PostController')->middleware('auth')->except('show');
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Muestra todos los datos del usuario
 Route::get('information/user', 'PageController@information')->name('information')->middleware('auth');
+Route::get('/pdf', 'PageController@pdf')->name('descarga')->middleware('auth');
